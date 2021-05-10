@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Registro Endereço</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/webjars/bootstrap/css/bootstrap.min.css"
+    />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script
+      type="text/javascript"
+      src="/webjars/bootstrap/js/bootstrap.min.js"
+    ></script>
+  </head>
+  <body>
+    <div class="container text-center">
+      <div>
+        <h1>Registro - Endereço</h1>
+      </div>
+      <form
+        th:action="@{/process_register}"
+        th:object="${address}"
+        method="post"
+        style="max-width: 600px; margin: 0 auto"
+      >
+        <div class="m-3">
+          <div class="form-group row">
+            <label class="col-4 col-form-label">Logradouro: </label>
+            <div class="col-8">
+              <input
+                type="text"
+                th:field="*{logradouro}"
+                class="form-control"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-4 col-form-label">Número: </label>
+            <div class="col-8">
+              <input
+                type="text"
+                th:field="*{number}"
+                class="form-control"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-4 col-form-label">Complemento: </label>
+            <div class="col-8">
+              <input
+                type="text"
+                th:field="*{complemento}"
+                class="form-control"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-4 col-form-label">Bairro: </label>
+            <div class="col-8">
+              <input
+                type="text"
+                th:field="*{bairro}"
+                class="form-control"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-4 col-form-label">Cidade: </label>
+            <div class="col-8">
+              <input
+                type="text"
+                th:field="*{cidade}"
+                class="form-control"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-4 col-form-label">Estado: </label>
+            <div class="col-8">
+              <input
+                type="text"
+                th:field="*{estado}"
+                class="form-control"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-4 col-form-label">CEP: </label>
+            <div class="col-8">
+              <input
+                type="text"
+                th:field="*{cep}"
+                class="form-control"
+                minlength="8"
+                maxlength="9"
+                required
+              />
+            </div>
+          </div>
+
+          <div>
+            <button type="submit" class="btn btn-primary">Registrar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
