@@ -21,6 +21,17 @@ public class User {
     @Column(nullable = false, length = 10)
     private String dob;
 
+    public User() {
+    }
+
+    public User(Long id, String name, String email, String cpf, String dob) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.cpf = cpf;
+        this.dob = dob;
+    }
+
     public Long getId() {
         return id;
     }
