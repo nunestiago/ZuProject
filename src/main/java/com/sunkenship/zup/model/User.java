@@ -1,4 +1,4 @@
-package com.sunkenship.zup.data;
+package com.sunkenship.zup.model;
 
 import javax.persistence.*;
 
@@ -7,25 +7,26 @@ import javax.persistence.*;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "nome")
     private String name;
 
-    @Column(nullable = false, unique = true, length = 45)
+    @Column(nullable = false, unique = true, length = 45, name = "email")
     private String email;
 
-    @Column(nullable = false, unique = true, length = 14)
+    @Column(nullable = false, unique = true, length = 14, name = "cpf")
     private String cpf;
 
-    @Column(nullable = false, length = 10)
+    @Column(nullable = false, length = 10, name = "dob")
     private String dob;
 
     public User() {
     }
 
+
     public User(Long id, String name, String email, String cpf, String dob) {
-        this.id = id;
         this.name = name;
         this.email = email;
         this.cpf = cpf;

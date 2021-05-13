@@ -1,28 +1,45 @@
 package com.sunkenship.zup.controllers;
 
-import com.sunkenship.zup.data.User;
+import com.sunkenship.zup.model.Address;
+import com.sunkenship.zup.model.User;
+import com.sunkenship.zup.repos.AddressRepository;
 import com.sunkenship.zup.repos.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 
 @RestController
+@RequestMapping("/api/")
 public class AppController {
 
     @Autowired
-    private UserRepository userRepo;
+    UserRepository userRepository;
+    @Autowired
+    AddressRepository addressRepository;
 
-    @GetMapping(path = {"/index", ""})
-    public String viewHomePage() {
-        return "index";
+    @PostMapping("address/new")
+    public Address getAddress(@RequestBody Address address){
+        addressRepository.save(address);
+        return address;
     }
 
-    @GetMapping
-    public User getUser(@RequestParam(name ="id", defaultValue = "1")int id) {
-    return new User((long) id, "Maira Joana", "alegria@alegria.com", "987.987.654-00", "01/01/2021");
+    @PostMapping("/users/new")
+    public User persist(@RequestBody final User user){
+        userRepository.save(user);
+        return user;
     };
+
+    @GetMapping("/address/id")
+    public List<Address> getAddress(@RequestBody User user){
+        return addressRepository.findByUserId(user.getId());
+    }
+
+    @GetMapping("/users/all")
+    public List<User> getUsers(){
+        return (List<User>) userRepository.findAll();
+    }
+
+
 }

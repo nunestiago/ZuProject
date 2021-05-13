@@ -1,4 +1,4 @@
-package com.sunkenship.zup.data;
+package com.sunkenship.zup.model;
 
 
 import javax.persistence.*;
@@ -7,28 +7,29 @@ import javax.persistence.*;
 @Table(name = "address")
 public class Address {
     @Id
+    @Column(name = "uID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "logradouro")
     private String logradouro;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "numero")
     private String numero;
 
-    @Column
+    @Column (name = "complemento")
     private String complemento;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "bairro")
     private String bairro;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "cidade")
     private String cidade;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "estado")
     private String estado;
 
-    @Column(nullable = false, length = 8)
+    @Column(nullable = false, length = 8, name = "cep")
     private String cep;
 
     public Address() {
@@ -36,7 +37,6 @@ public class Address {
     }
 
     public Address(Long id, String logradouro, String numero, String complemento, String bairro, String cidade, String estado, String cep) {
-        this.id = id;
         this.logradouro = logradouro;
         this.numero = numero;
         this.complemento = complemento;

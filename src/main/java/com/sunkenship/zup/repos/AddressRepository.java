@@ -1,7 +1,10 @@
 package com.sunkenship.zup.repos;
 
-import com.sunkenship.zup.data.Address;
-import org.springframework.data.repository.CrudRepository;
+import com.sunkenship.zup.model.Address;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface AddressRepository extends CrudRepository<Address, Long> {
+import java.util.List;
+
+public interface AddressRepository extends JpaRepository<Address, Long> {
+    List<Address> findByUserId(Long uID);
 }
